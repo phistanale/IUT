@@ -1,0 +1,105 @@
+Exercice 1 : 
+
+fonction estBienTrie (tab : in tableau_de entier) renvoie booleen
+debut
+	declarer i : entier_naturel <- 1;
+	tant_que(i<taille(tab) et tab[i]<tab[i-1])
+	faire
+		i<-i+1;
+	ffaire
+	si(i ne_vaut_pas taille(tab))
+		renvoie faux;
+	sinon
+		renvoie vrai;
+	fsi
+fin
+
+Exercice 2
+
+procedure triSelection (tab : in_out tableau_de entier)
+debut
+	declarer result : entier <- tab(0);
+	declarer min : entier_naturel;
+	pour(i variant_de 0 a taille(tab)-2)
+	faire
+		min <- i;
+		pour(j variant_de i+1 a taille(tab)-1)
+		faire
+			si(min ne_vaut_pas i)
+				result <- tab(i);
+				tab(i) <- tab(min);
+				tab(min) <- result
+			fsi
+		ffaire
+	ffaire
+fin
+
+Exercice 3 
+
+procedure triBulles (tab : in_out tableau_de entier)
+
+debut
+	declarer result : entier <- tab(0);
+	pour(i variant_de 0 a taille(tab)-1)
+	faire
+		pour(j variant_de 0 taille(tab)-1-i)
+		faire
+			si(tab[j]>=tab[j+1])
+				result <- tab(i);
+				tab[j] <- tab[j+1] ;
+                tab[j+1] <- result
+			fsi
+		ffaire
+	ffaire
+fin
+
+Exercice 4
+
+procedure triInsertion (tab : in_out tableau de entier)
+debut
+	declarer result : entier;
+	pour(i variant_de 0 a taille(tab-1))
+	faire
+		tant_que(j>=0 ET tab[j]<tab[j-1])
+		faire
+			result <- tab[j];
+			tab[j] <- tab[j-1];
+			tab[j-1] <- result;
+			j <- j - 1;
+		ffaire
+fin
+
+Exercice 5
+
+procedure triParComptage ( tab : in_out tableau_de entier)
+debut
+    declarer borneSuperieur : entier_naturel <-0 ;
+    declarer tabtrier : tableau_de taille(tab) entier;
+    pour (i variant_de 0 a taille(tab)-1)
+    faire
+        si  (tab[i] > borneSuperieur )
+            borneSuperieur <- tab[i];
+        fsi
+    ffaire
+
+    pour ( i variant_de 0 a borneSuperieur) 
+    faire
+        tabtrier[i]<-0;
+    ffaire
+
+    pour ( i variant_de 0 a taille(tab)-1)
+    faire
+        tabtrier[i] <- tabtrier[i]+1;
+    ffaire
+
+    declarer cpt : entier_naturel <- 0;
+    pour ( i variant_de 0 a taille(tab)-1)
+    faire
+        pour (j variant_de 0 a tabtrier[i])
+        faire
+            tab[cpt] <- i;
+            cpt <- cpt +1;
+        ffaire
+    ffaire
+
+fin
